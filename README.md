@@ -22,6 +22,7 @@
 - **Terminal**: Ptyxis
 - **Theme**: Yaru dark purple
 - **Optional**: SNAPS FREE!
+- **Tech Stack**: Python, Golang & Typescript
 
 #### ***Note:***
 *I’m aware I’m on a non-LTS Ubuntu release right now.
@@ -193,7 +194,6 @@ sudo systemctl enable --now lactd
 - Spotify
 - Obsidian
 - Piper
-- qBittorrent
 - Flatseal
 ```
 
@@ -204,7 +204,7 @@ sudo systemctl enable --now lactd
 sudo systemctl enable ufw && sudo systemctl start ufw && sudo ufw deny 22/tcp
 ```
 ```bash
-sudo apt install ubuntu-restricted-extras build-essential checkinstall libfuse2t64 unzip p7zip p7zip-full unrar make curl ca-certificates libssl-dev libxmlsec1-dev libmagic-dev libmagickwand-dev zsh fzf git-lfs starship bleachbit ffmpeg
+sudo apt install ubuntu-restricted-extras build-essential checkinstall libfuse2t64 unzip p7zip p7zip-full unrar make curl ca-certificates libssl-dev libxmlsec1-dev libmagic-dev libmagickwand-dev fzf git-lfs starship bleachbit ffmpeg
 ```
 ```bash
 sudo mkdir -p '/etc/systemd/resolved.conf.d' && sudo -e '/etc/systemd/resolved.conf.d/99-dns-over-tls.conf'
@@ -221,6 +221,14 @@ sudo timedatectl set-local-rtc '0'
 ```bash
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize-or-previews'
 ```
+```bash
+sudo apt autoremove && sudo apt autoclean && sudo apt clean
+```
+```bash
+sudo mv /etc/apt/apt.conf.d/20apt-esm-hook.conf /etc/apt/apt.conf.d/20apt-esm-hook.bak
+```
+
+
 
 #### 5. Optional. Setup my headphones JBL dual channel.
 ###### I have JBL Quantum 810 Wireless headphones that support two separate audio channels: one for system audio and another for voice chats. By default, they are not configured this way.
@@ -274,11 +282,299 @@ monitor.alsa.rules = [
 systemctl --user restart wireplumber.service
 ```
 
-
-
 ---
+
+## Development Setup
+
+#### 1. Install ZSH, enable as default and install Oh My Zsh
+
+```bash
+sudo apt install zsh -y
+```
+```bash
+chsh -s $(which zsh)
+```
+```bash
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+- Reboot the system.
+
+#### 2 Install my essential plugin stack.
+
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+```bash
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
+```
+```bash
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+```
+
+#### 3. UV, AWS Cli, Golang & Node Installation
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+```bash
+source $HOME/.local/bin/env
+```
+```bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+```
+```bash
+unzip awscliv2.zip && sudo ./aws/install && rm -rf aws awscliv2.zip
+```
+```bash
+sudo add-apt-repository ppa:longsleep/golang-backports && sudo apt update && sudo apt install golang-go
+```
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+```
+
+#### 4. Install VS Code & Zed
+```bash
+curl -f https://zed.dev/install.sh | sh
+```
+```bash
+sudo apt-get install wget gpg && wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && sudo install -D -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft.gpg && rm -f microsoft.gpg
+```
+```bash
+sudo nano /etc/apt/sources.list.d/vscode.sources
+```
+```
+Types: deb
+URIs: https://packages.microsoft.com/repos/code
+Suites: stable
+Components: main
+Architectures: amd64,arm64,armhf
+Signed-By: /usr/share/keyrings/microsoft.gpg
+```
+```bash
+sudo apt install apt-transport-https && sudo apt update && sudo apt install code
+```
+
+###### ***Note:*** If you need check vscode installation docs, go here: https://code.visualstudio.com/docs/setup/linux
+
+- Create an script called test.sh and copy that inside:
+```
+#!/bin/bash
+
+extensions=(
+    aaron-bond.better-comments
+    alefragnani.project-manager
+    batisteo.vscode-django
+    charliermarsh.ruff
+    cweijan.dbclient-jdbc
+    cweijan.vscode-mysql-client2
+    esbenp.prettier-vscode
+    formulahendry.auto-close-tag
+    formulahendry.auto-rename-tag
+    github.remotehub
+    graphql.vscode-graphql
+    graphql.vscode-graphql-syntax
+    gruntfuggly.todo-tree
+    hbenl.vscode-test-explorer
+    ibm.output-colorizer
+    idleberg.icon-fonts
+    kamikillerto.vscode-colorize
+    kevinrose.vsc-python-indent
+    littlefoxteam.vscode-python-test-adapter
+    mhutchie.git-graph
+    miguelsolorio.fluent-icons
+    miguelsolorio.min-theme
+    miguelsolorio.symbols
+    mikestead.dotenv
+    mkxml.vscode-filesize
+    mrmlnc.vscode-autoprefixer
+    ms-azuretools.vscode-containers
+    ms-azuretools.vscode-docker
+    ms-kubernetes-tools.vscode-kubernetes-tools
+    ms-python.debugpy
+    ms-python.isort
+    ms-python.python
+    ms-python.vscode-pylance
+    ms-python.vscode-python-envs
+    ms-vscode-remote.remote-containers
+    ms-vscode-remote.remote-ssh
+    ms-vscode-remote.remote-ssh-edit
+    ms-vscode-remote.remote-wsl
+    ms-vscode-remote.vscode-remote-extensionpack
+    ms-vscode.azure-repos
+    ms-vscode.remote-explorer
+    ms-vscode.remote-repositories
+    ms-vscode.remote-server
+    ms-vscode.test-adapter-converter
+    njpwerner.autodocstring
+    pranaygp.vscode-css-peek
+    redhat.vscode-yaml
+    spywhere.guides
+    wholroyd.jinja
+    yzhang.markdown-all-in-one
+    zhuangtongfa.material-theme
+)
+
+for ext in "${extensions[@]}"; do
+  code --install-extension "$ext"
+done
+```
+
+#### 5. System Tweaks
+```bash
+sudo nano /etc/sysctl.conf
+```
+```
+fs.inotify.max_user_watches = 10000000
+fs.inotify.max_user_instances = 256
+```
+```bash
+sudo sysctl -p
+```
+```bash
+sudo mkdir -p /etc/systemd/system/user@.service.d/
+```
+```bash
+sudo nano /etc/systemd/system/user@.service.d/delegate.conf
+```
+```
+[Service]
+Delegate=yes
+```
+```bash
+sudo systemctl daemon-reload
+```
+```bash
+sudo nano /etc/environment
+```
+```
+GDK_GL=gles
+```
+```bash
+sudo apt install nvidia-cuda-toolkit
+```
+
+#### 6. Podman setup
+```bash
+sudo apt install podman
+```
+```bash
+flatpak install flathub io.podman_desktop.PodmanDesktop
+```
+
+- Start Podman Desktop and follow the launch wizard. Install kubernetes & compose. After that create kind container and update it.
+
+```bash
+systemctl --user restart podman
+```
+
+#### 7. Git, SSH and GPG sign
+- We can configure Git in the .gitconfig file that I will leave in the dotfiles. Everything will be done in the last step when we install the dotfiles in our folder.
+- For ssh and gpg, Im using noreply mail provided by github.
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+```bash
+ssh-add ~/.ssh/id_ed25519
+```
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+```bash
+ssh -T git@github.com
+```
+```bash
+gpg --full-generate-key
+```
+- Take RSA and RSA, 4096 bits and fill all the fields in the prompt.
+
+```bash
+gpg --list-secret-keys --keyid-format=long
+```
+- Copy the long form of the GPG key ID you'd like to use. E.g. 8FF7C99772967AA3
+```bash
+gpg --armor --export 8FF7C99772967AA3
+```
+
+- Add the GPG key to your git account.
+
+#### 8. Others settings
+- Currently im using Ollama as model provider to run local IA. I prefer over claude or cloud solutions.
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+```bash
+curl -fsSL https://opencode.ai/install | bash
+```
+
+- Download some nerd fonts to install it https://github.com/ryanoasis/nerd-fonts/releases. After download, extract and copy into the fonts folder one by one.
+
+```bash
+cp -r *.ttf ~/.local/share/fonts/
+```
+```bash
+sudo fc-cache -f -v
+```
+
+- I've got another HDD to storage some games and development. Simply partition your disk as you like, copy the UUID of each partition, and edit the fstab file by adding a line similar to the following snippet for each partition you want to mount in a folder:
+```bash
+sudo nano /etc/fstab
+```
+```bash
+UUID=your_UUID /mnt/Games ext4 defaults,user,exec,rw 0 2
+```
+```bash
+sudo mount -a
+```
+
+- If you dont use gnome disk, you should probably give permissions to the folder with:
+```bash
+sudo chown user:user /mnt/Games
+```
+
+- Now I use dconf-editor for change system keybinds like Alt+Space, Workspace switcher or move window to X workspace, etc.
+
+- Install ruff formatter from astral team. Blazing fast formatter... Im in love with them, just only use:
+```bash
+uv tool install ruff@latest
+or
+curl -LsSf https://astral.sh/ruff/install.sh | sh
+```
+
+#### 9. Fix flatpak and gtk3 themes
+```bash
+mkdir -p ~/.themes
+```
+```bash
+cp -r /usr/share/themes/Yaru-purple* ~/.themes/
+```
+```bash
+flatpak override --user --env=GTK_THEME=Yaru-purple-dark
+```
+```bash
+nano .profile
+```
+- Paste this at the end.
+```bash
+export GTK_THEME=Yaru-purple-dark
+```
+---
+
+## Installing dotfiles
+- In this repository, you will find a folder called dotfiles that contains all the necessary files organized as I have them on my system. For zed, I will include the extension folders since there is no exact way to install extensions via terminal as in vscode.
+
+- The last step to configure the system as I have it is to copy the contents of this dotfiles folder and paste it into your user directory.
+
+- If you cannot see the folders inside this folder, it is because they are hidden by default in the browser. If you enable this option, you should be able to see everything.
+
+- Remember, dont forget change username and mail from settings like .gitconfig.
 
 
 ## Contributing
 
-placeholder
+These are my settings and preferences. I am making the repository public so that everyone feels free to use it, modify it, send me PRs, etc. I will also leave the file as a sketch that I created while running commands and researching.
+
+## Usefull Links
+- https://github.com/erik1066/fedora-setup-guide
+- https://github.com/devangshekhawat/Fedora-43-Post-Install-Guide

@@ -1,0 +1,24 @@
+id = "fastapi-snippets"
+name = "Fastapi Snippets"
+version = "0.2.0"
+schema_version = 1
+description = "A comprehensive collection of production-ready FastAPI snippets for the Zed code editor. Boost your development speed with templates for endpoints, security, database models, and more."
+repository = "https://github.com/NarmadaWeb/fastapi-snippets-zed"
+authors = ["RajaSunrise <indra020204@gmail.com>"]
+themes = []
+icon_themes = []
+languages = []
+snippets = "./snippets/python.json"
+capabilities = []
+
+[lib]
+
+[grammars]
+
+[language_servers]
+
+[context_servers]
+
+[slash_commands]
+
+[indexed_docs_providers]

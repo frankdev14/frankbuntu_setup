@@ -1,0 +1,37 @@
+[user]
+	name = username
+	email = mail
+	signingkey = YOURGPGKEYLONGFORMAT
+
+[core]
+    editor = code --wait
+
+[diff]
+    tool = vscode
+
+[difftool "vscode"]
+    cmd = code --wait --diff "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = vscode
+
+[mergetool "vscode"]
+    cmd = code --wait "$MERGED"
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg
+
+[init]
+	defaultBranch = main
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

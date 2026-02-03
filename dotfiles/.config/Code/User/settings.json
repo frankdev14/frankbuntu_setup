@@ -1,0 +1,105 @@
+{
+    // Theme
+    "workbench.iconTheme": "symbols",
+    "workbench.startupEditor": "none",
+    "workbench.productIconTheme": "fluent-icons",
+    "workbench.tips.enabled": false,
+    "workbench.tree.renderIndentGuides": "none",
+    "breadcrumbs.enabled": false,
+    "window.zoomLevel": 1,
+    "guides.enabled": true,
+
+    // Telemetry
+    "telemetry.editStats.enabled": false,
+    "telemetry.feedback.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.enableExperiments": false,
+    "database-client.telemetry.usesOnlineServices": false,
+    "python.analysis.reportExtraTelemetry": false,
+
+
+    // Editor and workspaces
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "'Google Sans Code', 'JetBrainsMono Nerd Font', Consolas, 'Courier New', monospace",
+    "editor.codeLens": true,
+    "editor.fontSize": 20,
+    "editor.dragAndDrop": true,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "selection",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.cursorStyle": "line",
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.tabSize": 4,
+    "editor.tabCompletion": "on",
+    "editor.wordWrap": "on",
+    "editor.trimAutoWhitespace": true,
+
+    // Files
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 5000,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/__pycache__": true,
+        "**/.cache": true,
+        "**/.idea": true,
+        "**/.venv": true
+    },
+
+    // Git
+    "git.autofetch": true,
+    "git.autorefresh": true,
+    "git.decorations.enabled": true,
+    "git.confirmSync": false,
+    "git.blame.editorDecoration.enabled": true,
+    "git.blame.statusBarItem.enabled": true,
+    "git.enableSmartCommit": true,
+
+    // Python
+    "python.terminal.activateEnvironment": true,
+    "python.languageServer": "Pylance",
+    "terminal.integrated.env.windows": {"PYTHONPATH":"${workspaceFolder}"},
+
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+
+    // Docker Setup
+    "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
+    "containers.contexts.showInStatusBar": true,
+    "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+    "containers.composeCommand": "podman compose",
+    "containers.containerCommand": "podman",
+    "dev.containers.dockerComposePath": "podman compose",
+    "vs-kubernetes": {
+        "vs-kubernetes.suppress-helm-not-found-alerts": true
+    },
+
+    // Terminal
+    "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.enableVisualBell": true,
+    "dev.containers.dockerPath": "podman",
+    "dev.containers.dockerSocketPath": "unix:///run/user/1000/podman/podman.sock",
+    "workbench.sideBar.location": "right",
+    "workbench.activityBar.location": "top",
+    "workbench.colorTheme": "Min Dark"
+}

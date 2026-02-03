@@ -1,0 +1,39 @@
+id = "graphql"
+name = "GraphQL"
+version = "1.0.3"
+schema_version = 1
+description = "GraphQL extension for Zed"
+repository = "https://github.com/11bit/zed-extension-graphql"
+authors = ["Ivan Buryak <ivan.buryak@gmail.com>"]
+themes = []
+icon_themes = []
+languages = ["languages/graphql"]
+capabilities = []
+
+[lib]
+kind = "Rust"
+version = "0.7.0"
+
+[grammars.graphql]
+repository = "https://github.com/11bit/tree-sitter-graphql"
+rev = "951bde9fb3145b5f676204231e35f8b21d21f7b3"
+
+[language_servers.graphql]
+language = "GraphQL"
+languages = ["JavaScript", "JSX", "TypeScript", "TSX", "Vue.js", "GraphQL", "Astro", "Svelte"]
+
+[language_servers.graphql.language_ids]
+JavaScript = "javascript"
+JSX = "javascriptreact"
+Astro = "astro"
+TSX = "typescriptreact"
+GraphQL = "graphql"
+TypeScript = "typescript"
+"Vue.js" = "vuejs"
+Svelte = "svelte"
+
+[context_servers]
+
+[slash_commands]
+
+[indexed_docs_providers]

@@ -1,0 +1,149 @@
+{
+    // Theme & Colors
+    "icon_theme": "Material Icon Theme",
+    "agent_ui_font_size": 26.0,
+    "ui_font_size": 22.0,
+    "buffer_font_size": 24.0,
+    "theme": "One Dark Pro",
+    "buffer_font_fallbacks": ["JetBrainsMono Nerd Font", "Courier New"],
+    "buffer_font_family": "Google Sans Code",
+    "colorize_brackets": true,
+
+    "auto_indent_on_paste": true,
+    "remove_trailing_whitespace_on_save": true,
+    "wrap_guides": [80, 120],
+    "soft_wrap": "editor_width",
+    "tab_size": 4,
+
+    // Editor Appearance
+    "title_bar": {
+        "show_branch_icon": true,
+    },
+    "diagnostics": {
+        "button": true,
+    },
+    "notification_panel": {
+        "button": false,
+    },
+    "collaboration_panel": {
+        "button": false,
+    },
+    "project_panel": {
+        "indent_size": 24.0,
+        "entry_spacing": "comfortable",
+        "default_width": 400.0,
+        "dock": "right",
+        "git_status": true,
+        "show_diagnostics": "errors",
+    },
+    "outline_panel": {
+        "dock": "left",
+        "button": true,
+        "git_status": true,
+    },
+    "agent": {
+        "profiles": {
+            "write": {
+                "name": "Write",
+                "tools": {
+                    "copy_path": true,
+                    "create_directory": true,
+                    "delete_path": true,
+                    "diagnostics": true,
+                    "edit_file": true,
+                    "fetch": true,
+                    "list_directory": true,
+                    "project_notifications": false,
+                    "move_path": true,
+                    "now": true,
+                    "find_path": true,
+                    "read_file": true,
+                    "restore_file_from_disk": true,
+                    "save_file": true,
+                    "open": true,
+                    "grep": true,
+                    "subagent": true,
+                    "terminal": true,
+                    "thinking": true,
+                    "web_search": true,
+                },
+                "enable_all_context_servers": true,
+                "context_servers": {},
+            },
+        },
+        "default_profile": "write",
+        "default_model": {
+            "provider": "ollama",
+            "model": "qwen3:8b",
+        },
+        "dock": "left",
+        "favorite_models": [],
+        "play_sound_when_agent_done": true,
+        "model_parameters": [],
+    },
+    "inlay_hints": {
+        "enabled": true,
+        "show_other_hints": true,
+        "show_parameter_hints": true,
+        "show_type_hints": true,
+        "show_value_hints": true,
+    },
+    "toolbar": {
+        "code_actions": true,
+    },
+    "cursor_shape": "bar",
+    "cursor_blink": true,
+    "buffer_font_features": {
+        "calt": true,
+    },
+    "terminal": {
+        "toolbar": {
+            "breadcrumbs": false,
+        },
+        "env": {},
+        "font_size": 18.0,
+        "font_family": "Hack Nerd Font Mono",
+        "cursor_shape": "bar",
+        "blinking": "on",
+    },
+    "minimap": {
+        "show": "never",
+    },
+    "show_edit_predictions": false,
+    "show_completions_on_input": true,
+
+    // Editor Behavior
+    "when_closing_with_no_tabs": "keep_window_open",
+    "base_keymap": "VSCode",
+    "tabs": {
+        "git_status": true,
+    },
+    "autosave": {
+        "after_delay": {
+            "milliseconds": 5000,
+        },
+    },
+
+    // Git
+    "git": {
+        "inline_blame": {
+            "enabled": true,
+        },
+    },
+
+    // Languages
+    "languages": {
+        "JSON": {
+            "prettier": {
+                "allowed": true,
+                "parser": "json",
+            },
+        },
+    },
+
+    // Telemetry
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false,
+    },
+}

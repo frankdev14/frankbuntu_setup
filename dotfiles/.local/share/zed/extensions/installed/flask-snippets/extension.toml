@@ -1,0 +1,24 @@
+id = "flask-snippets"
+name = "Flask Snippets"
+version = "0.0.2"
+schema_version = 1
+description = "Flask snippets for Zed IDE."
+repository = "https://github.com/ayberkgezer/flask-snippets"
+authors = ["Ayberk Gezer <ayberkgezer@outlook.com>"]
+themes = []
+icon_themes = []
+languages = []
+snippets = "./snippets/python.json"
+capabilities = []
+
+[lib]
+
+[grammars]
+
+[language_servers]
+
+[context_servers]
+
+[slash_commands]
+
+[indexed_docs_providers]
