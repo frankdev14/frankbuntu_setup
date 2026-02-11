@@ -1,0 +1,12 @@
+[/]
+accessibility-menu=false
+quick-settings-airplane-mode=false
+quick-settings-dark-mode=false
+quick-settings-night-light=false
+startup-status=0
+support-notifier-showed-version=36
+support-notifier-type=0
+weather=false
+window-demands-attention-focus=true
+workspace-popup=false
+world-clock=false
